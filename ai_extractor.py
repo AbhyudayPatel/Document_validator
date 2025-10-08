@@ -72,7 +72,7 @@ Extract the information and return it as structured JSON."""
 
             # Call Gemini with structured output (JSON mode)
             response = self.client.models.generate_content(
-                model="gemini-2.0-flash",
+                model="gemini-2.5-flash",
                 contents=prompt,
                 config={
                     "response_mime_type": "application/json",

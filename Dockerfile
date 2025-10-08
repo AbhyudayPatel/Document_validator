@@ -17,7 +17,7 @@ ENV PYTHONUNBUFFERED=1 \
 # Copy dependency files
 COPY pyproject.toml uv.lock ./
 
-# Install dependencies using uv (much faster than pip)
+# Install dependencies using uv to system Python (no venv)
 RUN uv sync --frozen --no-dev
 
 # Stage 2: Runtime stage
@@ -28,11 +28,11 @@ WORKDIR /app
 # Set environment variables
 ENV PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1 \
+    PATH="/app/.venv/bin:$PATH" \
     PORT=8000
 
-# Copy Python dependencies from builder stage
-COPY --from=builder /usr/local/lib/python3.12/site-packages /usr/local/lib/python3.12/site-packages
-COPY --from=builder /usr/local/bin /usr/local/bin
+# Copy Python dependencies from builder stage (virtual environment)
+COPY --from=builder /app/.venv /app/.venv
 
 # Copy application code
 COPY main.py .
