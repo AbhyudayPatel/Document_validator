@@ -6,35 +6,30 @@ import os
 from typing import Optional
 from google import genai
 from pydantic import BaseModel, Field
-from datetime import date
 
 
 class AIExtractedData(BaseModel):
-    
+
     policy_number: Optional[str] = Field(
-        None,
-        description="The policy reference number or ID (e.g., 'HM-2025-10-A4B')"
+        None, description="The policy reference number or ID (e.g., 'HM-2025-10-A4B')"
     )
     vessel_name: Optional[str] = Field(
-        None,
-        description="The name of the vessel being insured"
+        None, description="The name of the vessel being insured"
     )
     policy_start_date: Optional[str] = Field(
-        None,
-        description="Policy start/effective date in ISO format YYYY-MM-DD"
+        None, description="Policy start/effective date in ISO format YYYY-MM-DD"
     )
     policy_end_date: Optional[str] = Field(
-        None,
-        description="Policy end/expiration date in ISO format YYYY-MM-DD"
+        None, description="Policy end/expiration date in ISO format YYYY-MM-DD"
     )
     insured_value: Optional[int] = Field(
         None,
-        description="Total insured value as an integer (no currency symbols or decimals)"
+        description="Total insured value as an integer (no currency symbols or decimals)",
     )
 
 
 class AIExtractor:
-    
+
     EXTRACTION_PROMPT = """You are an expert insurance document parser. Your task is to carefully read the provided insurance document text and extract the following key information:
 
 1. **policy_number**: The unique policy reference number or ID. Look for terms like "policy number", "reference number", "policy ID", etc. If not found or explicitly stated as missing/blank/pending, return null.
@@ -58,7 +53,7 @@ class AIExtractor:
 {document_text}
 
 Extract the information and return it as structured JSON."""
-    
+
     def __init__(self, api_key: Optional[str] = None):
 
         self.api_key = api_key or os.getenv("GEMINI_API_KEY")
@@ -66,15 +61,15 @@ Extract the information and return it as structured JSON."""
             raise ValueError(
                 "Gemini API key not found. Please set GEMINI_API_KEY environment variable."
             )
-        
+
         self.client = genai.Client(api_key=self.api_key)
-    
+
     async def extract_data(self, document_text: str) -> AIExtractedData:
-        
+
         try:
             # Format the prompt with the document text
             prompt = self.EXTRACTION_PROMPT.format(document_text=document_text)
-            
+
             # Call Gemini with structured output (JSON mode)
             response = self.client.models.generate_content(
                 model="gemini-2.0-flash-exp",
@@ -84,31 +79,31 @@ Extract the information and return it as structured JSON."""
                     "response_schema": AIExtractedData,
                 },
             )
-            
+
             # Use the parsed response (Gemini automatically validates against schema)
             extracted: AIExtractedData = response.parsed
-            
+
             return extracted
-            
+
         except Exception as e:
             raise Exception(f"AI extraction failed: {str(e)}") from e
-    
+
     def extract_data_sync(self, document_text: str) -> AIExtractedData:
         """
         Synchronous version of extract_data for non-async contexts.
-        
+
         Args:
             document_text: The raw text content of the insurance document.
-        
+
         Returns:
             AIExtractedData: Structured data extracted from the document.
-        
+
         Raises:
             Exception: If the AI service fails or returns invalid data.
         """
         try:
             prompt = self.EXTRACTION_PROMPT.format(document_text=document_text)
-            
+
             response = self.client.models.generate_content(
                 model="gemini-2.5-flash",
                 contents=prompt,
@@ -117,9 +112,9 @@ Extract the information and return it as structured JSON."""
                     "response_schema": AIExtractedData,
                 },
             )
-            
+
             extracted: AIExtractedData = response.parsed
             return extracted
-            
+
         except Exception as e:
             raise Exception(f"AI extraction failed: {str(e)}") from e
