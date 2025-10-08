@@ -118,7 +118,7 @@ Invoke-RestMethod -Uri "http://localhost:8000/validate" -Method Post -Body $body
 
 - **"AI service not available"**: Verify `GEMINI_API_KEY` is set and valid
 - **"Valid vessels file not found"**: Ensure `provided_assets/valid_vessels.json` exists
-- **Date parsing issues**: AI returns dates in ISO format (YYYY-MM-DD)
+- **Date parsing issues**: AI returns dates in ISO format- (YYYY-MM-DD)
 
 ---
 
