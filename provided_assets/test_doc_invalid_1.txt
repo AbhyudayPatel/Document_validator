@@ -1,0 +1,13 @@
+URGENT: Policy Amendment Required
+
+Subject: Issue with policy for The Sea Serpent
+
+The policy needs immediate review. The coverage dates are incorrect:
+- Start Date: December 31, 2025
+- End Date: January 1, 2025
+
+The insured amount was mistakenly entered as zero.
+
+Policy ID field was left blank in the system.
+
+Please correct these errors immediately.

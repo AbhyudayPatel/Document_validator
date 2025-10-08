@@ -1,0 +1,16 @@
+TO: Underwriting Team
+FROM: Junior Analyst
+SUBJECT: URGENT CORRECTION - Policy for 'The Wanderer'
+
+Hi Team,
+
+Please see the notes below for the vessel 'The Wanderer'. We need to correct the records immediately. The policy ID is still pending from the broker, so that field is blank for now.
+
+The main issue is the coverage timeline. The client initially requested coverage from Jan 1, 2026, but the actual policy term is set to expire on Dec 31, 2025, which is obviously incorrect and needs to be flagged.
+
+Also, there was a data entry error on the value. It was entered as a positive sum, but it should be recorded as a debit of 500 dollars due to a prior claim. Please mark the insured value as -500 for now until we resolve this.
+
+This is not a standard vessel and it is not on the primary approved list.
+
+Thanks,
+Alex

@@ -1,0 +1,11 @@
+POLICY DOCUMENT - Ironclad Freighter
+
+Reference: IF-2025-FREIGHT-999
+
+Vessel: Ironclad Freighter
+Effective From: 01/06/2025
+Valid Until: 31/05/2026
+
+Coverage: Three Million Five Hundred Thousand USD ($3,500,000)
+
+Status: Active and in good standing

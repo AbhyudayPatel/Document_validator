@@ -1,0 +1,13 @@
+MARINE COVERAGE NOTE
+
+For: Unknown Vessel XYZ (not in approved fleet)
+
+Policy #: TEMP-001
+
+Coverage: 
+From: May 1, 2025
+To: April 30, 2026
+
+Value: $-1,000,000 (refund due)
+
+This is a temporary note pending vessel approval.
