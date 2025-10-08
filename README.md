@@ -18,7 +18,7 @@ A FastAPI microservice that validates insurance documents
 
 ```bash
 # Clone and navigate
-git clone <your-repo-url>
+git clone https://github.com/AbhyudayPatel/Document_validator.git
 cd Document_validator
 
 # Set up environment variable
