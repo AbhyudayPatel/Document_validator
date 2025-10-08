@@ -19,7 +19,7 @@ env/
 .env.*
 
 # Git
-.git/
+# .git/  # Commented out - Render may need Git context during deployment
 .gitignore
 .gitattributes
 
