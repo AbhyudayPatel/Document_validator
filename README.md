@@ -41,7 +41,7 @@ uv run uvicorn main:app --reload
 **Request:**
 ```json
 {
-  "document_text": "*** OFFICIAL COVER NOTE ***\nPolicy HM-2025-10-A4B for MV Neptune..."
+  "document_text": "MARINE INSURANCE CERTIFICATE Certificate No: MIC-2025-STAR-789 Vessel Information: This certificate is issued for the vessel 'Starlight Carrier' Insurance Period: Commencement: January 15, 2025 Termination: 14-01-2026 Coverage Amount: The sum insured under this policy is Ten Million US Dollars ($10,000,000) This certificate is valid and binding upon the issuance date"
 }
 ```
 
@@ -49,17 +49,33 @@ uv run uvicorn main:app --reload
 ```json
 {
   "extracted_data": {
-    "policy_number": "HM-2025-10-A4B",
-    "vessel_name": "MV Neptune",
-    "policy_start_date": "2025-11-01",
-    "policy_end_date": "2026-10-31",
-    "insured_value": 5000000
+    "policy_number": "MIC-2025-STAR-789",
+    "vessel_name": "Starlight Carrier",
+    "policy_start_date": "2025-01-15",
+    "policy_end_date": "2026-01-14",
+    "insured_value": 10000000
   },
   "validation_results": [
-    {"rule": "Date Consistency", "status": "PASS", "message": "..."},
-    {"rule": "Value Check", "status": "PASS", "message": "..."},
-    {"rule": "Vessel Name Match", "status": "PASS", "message": "..."},
-    {"rule": "Completeness Check", "status": "PASS", "message": "..."}
+    {
+      "rule": "Date Consistency",
+      "status": "PASS",
+      "message": "Policy end date is after start date."
+    },
+    {
+      "rule": "Value Check",
+      "status": "PASS",
+      "message": "Insured value is valid."
+    },
+    {
+      "rule": "Vessel Name Match",
+      "status": "PASS",
+      "message": "Vessel 'Starlight Carrier' is on the approved list."
+    },
+    {
+      "rule": "Completeness Check",
+      "status": "PASS",
+      "message": "Policy number is present."
+    }
   ]
 }
 ```

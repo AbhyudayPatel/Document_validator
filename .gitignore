@@ -1,24 +1,5 @@
 # Python-generated files
-__pycache__/
-*.py[oc]
-*.pyo
-*.pyd
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
+__pycache__
 
 # Virtual environments
 .venv/
@@ -28,8 +9,6 @@ env/
 
 # Environment variables
 .env
-.env.local
-.env.*.local
 
 # IDE
 .vscode/
@@ -38,17 +17,6 @@ env/
 *.swo
 *~
 .DS_Store
-
-# Testing
-.pytest_cache/
-.coverage
-htmlcov/
-*.cover
-.hypothesis/
-.tox/
-
-# Jupyter Notebook
-.ipynb_checkpoints
 
 # pyenv
 .python-version
